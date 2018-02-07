@@ -1,0 +1,13 @@
+import requests
+import json
+
+api_request = requests.get("https://api.coinmarketcap.com/v1/ticker/")
+
+api = json.loads(api_request.content)
+
+coins = ["BTC", "ETH", "TRX"]
+
+for x in api:
+    for c in coins:
+        if c == x["symbol"]:
+            print(x["name"] + " usd price is " + x["price_usd"])
